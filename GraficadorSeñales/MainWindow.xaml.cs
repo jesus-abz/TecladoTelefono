@@ -201,14 +201,26 @@ namespace GraficadorSeñales
                 int indiceMaximo = 0;
                 for (int i = 0; i < señalResultante.Muestras.Count / 2; i++)
                 {
-                    if(señalResultante.Muestras[i].Y > señalResultante.Muestras[indiceMaximo].Y)
+                    if (señalResultante.Muestras[i].Y > señalResultante.Muestras[indiceMaximo].Y)
                     {
                         indiceMaximo = i;
                     }
                 }
                 double frecuencia = (double)(indiceMaximo * señalResultante.FrecuenciaMuestreo) /
                     (double)señalResultante.Muestras.Count;
-                lblHerz2.Text = frecuencia.ToString("N") + " Hz";
+                lblHerz.Text = frecuencia.ToString("N") + " Hz";
+
+                int indiceMaximo2 = 0;
+                for (int i = 0; i < señalResultante.Muestras.Count / 2; i++)
+                {
+                    if(señalResultante.Muestras[i].Y > señalResultante.Muestras[indiceMaximo2].Y)
+                    {
+                        indiceMaximo2 = i;
+                    }
+                }
+                double frecuencia2 = (double)(indiceMaximo2 * señalResultante.FrecuenciaMuestreo) /
+                    (double)señalResultante.Muestras.Count;
+                lblHerz2.Text = frecuencia2.ToString("N") + " Hz";
             }
 
             lblLimiteSuperior.Text = amplitudMaxima.ToString("F");
