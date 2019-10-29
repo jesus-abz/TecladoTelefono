@@ -199,7 +199,11 @@ namespace GraficadorSeñales
             if (cbOperacion.SelectedIndex == 4)
             {
                 int indiceMaximo = 0;
-                for (int i = 0; i < señalResultante.Muestras.Count / 2; i++)
+                int indiceInicial = (int)((690.0f * (double)(señalResultante.Muestras.Count)) /
+                    señalResultante.FrecuenciaMuestreo);
+                int indiceIFinal = (int)((950.0f * (double)(señalResultante.Muestras.Count)) /
+                    señalResultante.FrecuenciaMuestreo);
+                for (int i = indiceInicial; i < indiceIFinal; i++)
                 {
                     if (señalResultante.Muestras[i].Y > señalResultante.Muestras[indiceMaximo].Y)
                     {
@@ -210,8 +214,12 @@ namespace GraficadorSeñales
                     (double)señalResultante.Muestras.Count;
                 lblHerz.Text = frecuencia.ToString("N") + " Hz";
 
+                int indiceInicial2 = (int)((1200.0f * (double)(señalResultante.Muestras.Count)) /
+                    señalResultante.FrecuenciaMuestreo);
+                int indiceIFinal2 = (int)((1500.0f * (double)(señalResultante.Muestras.Count)) /
+                    señalResultante.FrecuenciaMuestreo);
                 int indiceMaximo2 = 0;
-                for (int i = 0; i < señalResultante.Muestras.Count / 2; i++)
+                for (int i = indiceInicial2; i < indiceIFinal2; i++)
                 {
                     if(señalResultante.Muestras[i].Y > señalResultante.Muestras[indiceMaximo2].Y)
                     {
@@ -221,6 +229,8 @@ namespace GraficadorSeñales
                 double frecuencia2 = (double)(indiceMaximo2 * señalResultante.FrecuenciaMuestreo) /
                     (double)señalResultante.Muestras.Count;
                 lblHerz2.Text = frecuencia2.ToString("N") + " Hz";
+
+                
             }
 
             lblLimiteSuperior.Text = amplitudMaxima.ToString("F");
